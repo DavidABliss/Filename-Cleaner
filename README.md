@@ -7,7 +7,7 @@ Derived from Archives Data Accessioner by Liam Everett liam.m.everett@gmail.com 
 
 ### General Description:
 - Given a database, strips the file names of illegal characters, replacing them with an underscore
-- legal characters are alphanumerical characters and underscores
+- legal characters are alphanumerical characters, underscores, and hyphens
 - If a file is renamed it gets stored in BAGNAME\meta\renames.csv 
 - There will be one renames.csv file for every directory in the directory that is originally passed to the program
 - If the program cannot rename a file for some reason it will store the file path in an errors.csv file in the top directory 
