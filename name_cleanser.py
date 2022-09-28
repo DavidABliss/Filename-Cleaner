@@ -13,6 +13,8 @@ based off of data_accessioner.py by Liam Everett
     sahreek@gmail.com
 
 June 2015
+
+August 2022 -- David Bliss edited this script to ignore hyphen characters in filenames, and to look for the "meta" folder within the user-provided root directory rather than "data/meta" within the user-provided root directory. Newer bagging tools released since this script was first written create the "data" directory themselves, so archives staff should not manually create the "data" directory.
 """
 import os
 import sys
@@ -39,7 +41,7 @@ class NameCleanser:
         #initialize the cleanse settings using a file
         self.initialize_cleanse_settings(settings_file)
         #Characters that are allowed in file names
-        self.safe_chars ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_."
+        self.safe_chars ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_-."
         #The location of the topmost directory
         self.top_directory = path_arg
         # entries will be of the form {new_name:old_name}
@@ -57,7 +59,7 @@ class NameCleanser:
         #is updated in iterate_through_drectory
         self.current_bag = self.top_directory
         #the relative path to rename files
-        renames_path = os.path.join("data","meta")
+        renames_path = os.path.join(path_arg,"meta")
 
     def initialize_cleanse_settings(self, settings_file):
         """ Pulls settings for rename from settings_file """
@@ -119,7 +121,7 @@ class NameCleanser:
     def check_file_structure(self, path_to_file):
         """ checks if BAGNAME/data/meta exists, creates it if it does not"""
         #this is the structure the data and meta file should be in
-        correct_structure = os.path.join(path_to_file, self.renames_path)
+        correct_structure = os.path.join(self.top_directory, self.renames_path)
         #tries making the file
         try:
             os.makedirs(correct_structure)
