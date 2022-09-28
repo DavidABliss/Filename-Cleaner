@@ -1,7 +1,7 @@
 #Archives File Name Cleaner
 ===========================
 
-Code by Caitlin Donahue caitlindonahue95@gmail.com
+Code by Caitlin Donahue caitlindonahue95@gmail.com, fork by David Bliss
 
 Derived from Archives Data Accessioner by Liam Everett liam.m.everett@gmail.com and edited by Sahree Kasper sahreek@gmail.com
 
